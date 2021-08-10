@@ -1,11 +1,13 @@
 using System.Collections;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class WaveSpawner : MonoBehaviour
 {
     [SerializeField] private Transform enemyPrefab;
     [SerializeField] private Transform spawnPoint;
-    [SerializeField] private float waveInterval = 5f;
+    [SerializeField] private float waveInterval = 5.99f;
+    [SerializeField] private Text waveCountDownText;
 
     private float _countdown = 2f;
     private int _waveIndex = 0;
@@ -17,6 +19,8 @@ public class WaveSpawner : MonoBehaviour
             StartCoroutine(SpawnWave());
             _countdown = waveInterval;
         }
+
+        waveCountDownText.text = $"{Mathf.Floor(_countdown)}";
 
         _countdown -= Time.deltaTime;
     }

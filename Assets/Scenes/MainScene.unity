@@ -354,7 +354,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   enemyPrefab: {fileID: 7997111542317568648, guid: be13822af2ef34b7f9df584f76829f74, type: 3}
   spawnPoint: {fileID: 1205486538}
-  waveInterval: 5
+  waveInterval: 5.99
+  waveCountDownText: {fileID: 2129418501}
 --- !u!1 &116643880
 GameObject:
   m_ObjectHideFlags: 0
