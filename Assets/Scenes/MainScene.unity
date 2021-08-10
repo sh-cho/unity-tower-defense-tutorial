@@ -352,6 +352,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c50ee0b8856194389a3698ee0ee28b48, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  enemyPrefab: {fileID: 7997111542317568648, guid: be13822af2ef34b7f9df584f76829f74, type: 3}
+  spawnPoint: {fileID: 1205486538}
+  waveInterval: 5
 --- !u!1001 &124506705
 PrefabInstance:
   m_ObjectHideFlags: 0
