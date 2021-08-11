@@ -10,8 +10,9 @@ public class Turret : MonoBehaviour
 
     // Fields    
     private GameObject target;
-    [SerializeField] private GameObject partToRotate; 
+    [SerializeField] private GameObject partToRotate;
     [SerializeField] private float fireRadius = 0.5f;
+    [SerializeField] private float turnSpeed = 10f;
 
     private void Start()
     {
@@ -22,16 +23,19 @@ public class Turret : MonoBehaviour
     {
         if (target == null) return;
 
-        /*
-        /// Rotation using Quaternion
-
-        Vector3 dir = target.position - transform.position;
+        Vector3 dir = target.transform.position - transform.position;
         Quaternion lookRotation = Quaternion.LookRotation(dir);
-        Vector3 rotation = lookRotation.eulerAngles;
-        partToRotate.rotation = Quaternion.Euler(0f, rotation.y, 0f);
-         */
-        Transform tr = target.transform;
-        partToRotate.transform.LookAt(new Vector3(tr.position.x, partToRotate.transform.position.y, tr.position.z));
+        Vector3 rotation = Quaternion.Lerp(partToRotate.transform.rotation, lookRotation, Time.deltaTime * turnSpeed).eulerAngles;
+        partToRotate.transform.rotation = Quaternion.Euler(0f, rotation.y, 0f);
+
+        // Transform tr = target.transform;
+        // partToRotate.transform.LookAt(
+        //     new Vector3(
+        //         Mathf.Lerp(partToRotate.transform.position.x, tr.position.x, Time.deltaTime * turnSpeed),
+        //         partToRotate.transform.position.y,
+        //         Mathf.Lerp(partToRotate.transform.position.z, tr.position.z, Time.deltaTime * turnSpeed)
+        //     )
+        // );
     }
 
     private void OnDrawGizmosSelected()
