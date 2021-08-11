@@ -4371,25 +4371,6 @@ MonoBehaviour:
   m_EffectColor: {r: 0, g: 0, b: 0, a: 0.5}
   m_EffectDistance: {x: 2, y: -1}
   m_UseGraphicAlpha: 1
---- !u!1 &919132147570189911 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 1976392971534646556, guid: 8c4377e56aede452f84178b967d62060, type: 3}
-  m_PrefabInstance: {fileID: 1705992613036202827}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &919132147570189912
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 919132147570189911}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b298079fa04a6430782e8f4af6a3c2a8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  target: {fileID: 0}
-  fireRadius: 5
 --- !u!1001 &1705992613036202827
 PrefabInstance:
   m_ObjectHideFlags: 0

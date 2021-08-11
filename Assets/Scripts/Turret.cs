@@ -10,6 +10,7 @@ public class Turret : MonoBehaviour
 
     // Fields    
     private GameObject target;
+    [SerializeField] private GameObject partToRotate; 
     [SerializeField] private float fireRadius = 0.5f;
 
     private void Start()
