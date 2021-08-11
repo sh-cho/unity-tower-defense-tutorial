@@ -22,7 +22,16 @@ public class Turret : MonoBehaviour
     {
         if (target == null) return;
 
+        /*
+        /// Rotation using Quaternion
 
+        Vector3 dir = target.position - transform.position;
+        Quaternion lookRotation = Quaternion.LookRotation(dir);
+        Vector3 rotation = lookRotation.eulerAngles;
+        partToRotate.rotation = Quaternion.Euler(0f, rotation.y, 0f);
+         */
+        Transform tr = target.transform;
+        partToRotate.transform.LookAt(new Vector3(tr.position.x, partToRotate.transform.position.y, tr.position.z));
     }
 
     private void OnDrawGizmosSelected()
