@@ -25,7 +25,6 @@ public class Node : MonoBehaviour
         }
 
         // Build Turret
-        GameObject newTurret = (GameObject)Instantiate(Resources.Load("Turret"));
     }
 
     private void OnMouseEnter()
