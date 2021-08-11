@@ -8,11 +8,16 @@ public class Turret : MonoBehaviour
     // Constants
     private const string ENEMY_TAG = "Enemy";
 
-    // Fields    
+    // Fields
+    [Header("Unity Setup Fields")]
     private GameObject target;
     [SerializeField] private GameObject partToRotate;
-    [SerializeField] private float fireRadius = 0.5f;
     [SerializeField] private float turnSpeed = 10f;
+
+    [Header("Attributes")]
+    [SerializeField] private float fireRadius = 0.5f;
+    [SerializeField] private float fireRate = 1f;
+    private float fireCountDown = 0f;
 
     private void Start()
     {
