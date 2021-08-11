@@ -6,6 +6,7 @@ using UnityEngine.Rendering;
 public class Node : MonoBehaviour
 {
     [SerializeField] private Color hoverColor;
+    [SerializeField] private Vector3 positionOffset;
     private GameObject turret;
     private Renderer rend;
     private Color originalColor;
@@ -25,6 +26,8 @@ public class Node : MonoBehaviour
         }
 
         // Build Turret
+        GameObject turrentToBuild = BuildManager.Instance.GetTurretToBuild();
+        turret = Instantiate(turrentToBuild, transform.position + positionOffset, transform.rotation);
     }
 
     private void OnMouseEnter()
