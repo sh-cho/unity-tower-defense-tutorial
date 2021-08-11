@@ -19,13 +19,11 @@ public class BuildManager : MonoBehaviour
     }
 
 
-    [SerializeField] private GameObject standardTurretPrefab;
+    public GameObject standardTurretPrefab;
+    public GameObject anotherTurretPrefab;
     private GameObject turretToBuild;
-    private void Start()
-    {
-        turretToBuild = standardTurretPrefab;
-    }
 
     // ------------------------------
     public GameObject GetTurretToBuild() { return turretToBuild; }
+    public void SetTurretToBuild(GameObject newTurret) { turretToBuild = newTurret; }
 }
