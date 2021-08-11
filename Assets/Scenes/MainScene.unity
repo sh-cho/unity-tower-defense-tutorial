@@ -4426,10 +4426,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Turret
       objectReference: {fileID: 0}
-    - target: {fileID: 3781875747749912923, guid: 8c4377e56aede452f84178b967d62060, type: 3}
-      propertyPath: turnSpeed
-      value: 10
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8c4377e56aede452f84178b967d62060, type: 3}
 --- !u!1001 &1957214153762748290
