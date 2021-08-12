@@ -43,7 +43,7 @@ public class Bullet : MonoBehaviour
     public void HitTarget()
     {
         GameObject effectInstance = Instantiate(impactEffect, transform.position, transform.rotation);
-        Destroy(effectInstance, 2f);
+        Destroy(effectInstance, 5f);
 
         // splash damage
         if (explosionRadius > 0f)
