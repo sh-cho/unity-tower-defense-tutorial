@@ -20,7 +20,7 @@ public class WaveSpawner : MonoBehaviour
             _countdown = waveInterval;
         }
 
-        waveCountDownText.text = $"{Mathf.Floor(_countdown)}";
+        waveCountDownText.text = $"{_countdown:0.00}";
 
         _countdown -= Time.deltaTime;
     }
