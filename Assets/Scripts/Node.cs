@@ -4,8 +4,9 @@ using UnityEngine.EventSystems;
 public class Node : MonoBehaviour
 {
     [SerializeField] private Color hoverColor;
+    [SerializeField] private Color notEnoughMoneyColor;
     [SerializeField] private Vector3 positionOffset;
-    
+
     [Header("Optional")]
     public GameObject turret;
     private Renderer rend;
@@ -35,7 +36,7 @@ public class Node : MonoBehaviour
         if (EventSystem.current.IsPointerOverGameObject())
             return;
 
-        if (!buildManager.CanBuild)
+        if (!buildManager.CanBuild || !buildManager.HasMoney)
             return;
 
         if (turret)
@@ -45,8 +46,6 @@ public class Node : MonoBehaviour
         }
 
         // Build Turret
-        // GameObject turrentToBuild = BuildManager.Instance.GetTurretToBuild();
-        // turret = Instantiate(turrentToBuild, transform.position + positionOffset, transform.rotation);
         buildManager.BuildTurretOn(this);
     }
 
@@ -58,7 +57,14 @@ public class Node : MonoBehaviour
         if (!buildManager.CanBuild)
             return;
 
-        rend.material.color = hoverColor;
+        if (buildManager.HasMoney)
+        {
+            rend.material.color = hoverColor;
+        }
+        else
+        {
+            rend.material.color = notEnoughMoneyColor;
+        }
     }
 
     private void OnMouseExit()

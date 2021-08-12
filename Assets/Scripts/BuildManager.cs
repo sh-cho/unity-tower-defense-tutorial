@@ -1,6 +1,3 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class BuildManager : MonoBehaviour
@@ -26,6 +23,7 @@ public class BuildManager : MonoBehaviour
 
     // ------------------------------
     public bool CanBuild { get { return turretToBuild != null; } }
+    public bool HasMoney { get { return PlayerStats.money >= turretToBuild.cost; } }
     public void BuildTurretOn(Node node)
     {
         if (PlayerStats.money < turretToBuild.cost)
