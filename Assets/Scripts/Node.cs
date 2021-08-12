@@ -11,7 +11,7 @@ public class Node : MonoBehaviour
 
     private BuildManager buildManager;
 
-    private void Awake()
+    private void Start()
     {
         buildManager = BuildManager.Instance;
         rend = GetComponent<Renderer>();
