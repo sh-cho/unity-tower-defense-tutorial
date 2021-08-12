@@ -5,6 +5,7 @@ public class Bullet : MonoBehaviour
     private GameObject target;
     [SerializeField] private GameObject impactEffect;
     [SerializeField] private float speed = 70f;
+    [SerializeField] private float explosionRadius = 0f;    // To splash damage
 
     private void Update()
     {
@@ -27,6 +28,12 @@ public class Bullet : MonoBehaviour
         transform.LookAt(target.transform);
     }
 
+    private void OnDrawGizmosSelected()
+    {
+        Gizmos.color = Color.red;
+        Gizmos.DrawWireSphere(transform.position, explosionRadius);
+    }
+
     // ------------------------------
     public void SetTarget(GameObject _target)
     {
@@ -37,7 +44,35 @@ public class Bullet : MonoBehaviour
     {
         GameObject effectInstance = Instantiate(impactEffect, transform.position, transform.rotation);
         Destroy(effectInstance, 2f);
-        Destroy(target);
+
+        // splash damage
+        if (explosionRadius > 0f)
+        {
+            Explode();
+        }
+        else
+        {
+            Damage(target);
+        }
+
         Destroy(gameObject);
+    }
+
+    public void Explode()
+    {
+        // TODO: Fix with OverlapSphere Layer mask (tag checking is slow maybe)
+        Collider[] colliders = Physics.OverlapSphere(transform.position, explosionRadius);
+        foreach (Collider col in colliders)
+        {
+            if (col.tag == "Enemy")
+            {
+                Damage(col.gameObject);
+            }
+        }
+    }
+
+    public void Damage(GameObject target)
+    {
+        Destroy(target);
     }
 }
