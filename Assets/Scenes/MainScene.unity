@@ -320,6 +320,7 @@ GameObject:
   - component: {fileID: 101005369}
   - component: {fileID: 101005370}
   - component: {fileID: 101005371}
+  - component: {fileID: 101005372}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -371,6 +372,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   standardTurretPrefab: {fileID: 1976392971534646556, guid: 8c4377e56aede452f84178b967d62060, type: 3}
   missileTurretPrefab: {fileID: 7847626294788586245, guid: 04f354b7eb18e43f18b204a2a5d16fdb, type: 3}
+--- !u!114 &101005372
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 101005368}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c43d7434f2ca448c182ce16439857f89, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &116643880
 GameObject:
   m_ObjectHideFlags: 0
@@ -1372,7 +1385,7 @@ PrefabInstance:
       objectReference: {fileID: 2106044158}
     - target: {fileID: 6627446262823409333, guid: 963dc69620fdf417385326b15d9a7033, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: PurchaseMissileTurret
+      value: SelectMissileTurret
       objectReference: {fileID: 0}
     - target: {fileID: 6627446262823409334, guid: 963dc69620fdf417385326b15d9a7033, type: 3}
       propertyPath: m_Name
@@ -1396,7 +1409,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6627446262823409335, guid: 963dc69620fdf417385326b15d9a7033, type: 3}
       propertyPath: m_AnchorMax.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6627446262823409335, guid: 963dc69620fdf417385326b15d9a7033, type: 3}
       propertyPath: m_AnchorMin.x
@@ -1404,15 +1417,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6627446262823409335, guid: 963dc69620fdf417385326b15d9a7033, type: 3}
       propertyPath: m_AnchorMin.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6627446262823409335, guid: 963dc69620fdf417385326b15d9a7033, type: 3}
       propertyPath: m_SizeDelta.x
-      value: 0
+      value: 90
       objectReference: {fileID: 0}
     - target: {fileID: 6627446262823409335, guid: 963dc69620fdf417385326b15d9a7033, type: 3}
       propertyPath: m_SizeDelta.y
-      value: 0
+      value: 90
       objectReference: {fileID: 0}
     - target: {fileID: 6627446262823409335, guid: 963dc69620fdf417385326b15d9a7033, type: 3}
       propertyPath: m_LocalPosition.x
@@ -1444,11 +1457,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6627446262823409335, guid: 963dc69620fdf417385326b15d9a7033, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 0
+      value: 536
       objectReference: {fileID: 0}
     - target: {fileID: 6627446262823409335, guid: 963dc69620fdf417385326b15d9a7033, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 0
+      value: -65
       objectReference: {fileID: 0}
     - target: {fileID: 6627446262823409335, guid: 963dc69620fdf417385326b15d9a7033, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -4474,6 +4487,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5f4742a125e1f4dc6b71066ed714f2fa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  standardTurret:
+    prefab: {fileID: 1976392971534646556, guid: 8c4377e56aede452f84178b967d62060, type: 3}
+    cost: 100
+  missileLauncher:
+    prefab: {fileID: 7847626294788586245, guid: 04f354b7eb18e43f18b204a2a5d16fdb, type: 3}
+    cost: 0
 --- !u!1001 &2107792800
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -4756,6 +4775,10 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 2106044158}
+    - target: {fileID: 6627446262823409333, guid: 963dc69620fdf417385326b15d9a7033, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: SelectStandardTurret
+      objectReference: {fileID: 0}
     - target: {fileID: 6627446262823409334, guid: 963dc69620fdf417385326b15d9a7033, type: 3}
       propertyPath: m_Name
       value: StandardTurretItem
@@ -4778,7 +4801,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6627446262823409335, guid: 963dc69620fdf417385326b15d9a7033, type: 3}
       propertyPath: m_AnchorMax.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6627446262823409335, guid: 963dc69620fdf417385326b15d9a7033, type: 3}
       propertyPath: m_AnchorMin.x
@@ -4786,15 +4809,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6627446262823409335, guid: 963dc69620fdf417385326b15d9a7033, type: 3}
       propertyPath: m_AnchorMin.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6627446262823409335, guid: 963dc69620fdf417385326b15d9a7033, type: 3}
       propertyPath: m_SizeDelta.x
-      value: 0
+      value: 100
       objectReference: {fileID: 0}
     - target: {fileID: 6627446262823409335, guid: 963dc69620fdf417385326b15d9a7033, type: 3}
       propertyPath: m_SizeDelta.y
-      value: 0
+      value: 100
       objectReference: {fileID: 0}
     - target: {fileID: 6627446262823409335, guid: 963dc69620fdf417385326b15d9a7033, type: 3}
       propertyPath: m_LocalPosition.x
@@ -4826,11 +4849,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6627446262823409335, guid: 963dc69620fdf417385326b15d9a7033, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 0
+      value: 431
       objectReference: {fileID: 0}
     - target: {fileID: 6627446262823409335, guid: 963dc69620fdf417385326b15d9a7033, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 0
+      value: -65
       objectReference: {fileID: 0}
     - target: {fileID: 6627446262823409335, guid: 963dc69620fdf417385326b15d9a7033, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
