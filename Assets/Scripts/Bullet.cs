@@ -5,6 +5,7 @@ public class Bullet : MonoBehaviour
     private GameObject target;
     [SerializeField] private GameObject impactEffect;
     [SerializeField] private float speed = 70f;
+    [SerializeField] private int damage = 50;
     [SerializeField] private float explosionRadius = 0f;    // To splash damage
 
     private void Update()
@@ -73,6 +74,7 @@ public class Bullet : MonoBehaviour
 
     public void Damage(GameObject target)
     {
-        Destroy(target);
+        Enemy e = target.GetComponent<Enemy>();
+        e.TakeDamage(damage);
     }
 }

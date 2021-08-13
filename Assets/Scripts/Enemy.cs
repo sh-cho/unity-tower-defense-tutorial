@@ -5,7 +5,10 @@ using UnityEngine;
 public class Enemy : MonoBehaviour
 {
     [SerializeField] private float speed = 10f;
+    [SerializeField] private int health = 100;
+    [SerializeField] private int moneyDrop = 1;
 
+    [SerializeField] private GameObject deathEffect;
     private Transform target;
     private int waypointIndex = 0;
 
@@ -23,7 +26,7 @@ public class Enemy : MonoBehaviour
         {
             if (waypointIndex >= Waypoints.points.Count - 1)
             {
-                Destroy(gameObject);
+                EndPath();
                 return;
             }
 
@@ -32,4 +35,24 @@ public class Enemy : MonoBehaviour
     }
 
     // ----------------------------------------------------------------------------
+    private void EndPath()
+    {
+        --PlayerStats.lives;
+        Destroy(gameObject);
+    }
+
+    public void TakeDamage(int amonut)
+    {
+        health -= amonut;
+
+        if (health <= 0)
+        {
+            PlayerStats.money += moneyDrop;
+
+            // Die
+            GameObject e = Instantiate(deathEffect, transform.position, Quaternion.identity);
+            Destroy(e, 5f);
+            Destroy(gameObject);
+        }
+    }
 }
