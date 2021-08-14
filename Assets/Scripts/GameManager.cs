@@ -2,12 +2,25 @@ using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
-    private bool gameEnded = false;
+    [SerializeField] private GameObject gameOverUI;
+
+    public static bool gameIsOver;
+
+    private void Start()
+    {
+        gameIsOver = false;
+    }
 
     private void Update()
     {
-        if (gameEnded)
+        if (gameIsOver)
             return;
+
+        // TODO: Remove before publish
+        if (Input.GetKeyDown("e"))
+        {
+            EndGame();
+        }
 
         if (PlayerStats.lives <= 0)
         {
@@ -18,6 +31,7 @@ public class GameManager : MonoBehaviour
     //------------------------------------------------------------
     private void EndGame()
     {
-        gameEnded = true;
+        gameIsOver = true;
+        gameOverUI.SetActive(true);
     }
 }

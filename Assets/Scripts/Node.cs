@@ -1,3 +1,4 @@
+using System.ComponentModel;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
@@ -5,12 +6,14 @@ public class Node : MonoBehaviour
 {
     [SerializeField] private Color hoverColor;
     [SerializeField] private Color notEnoughMoneyColor;
+    [SerializeField] private Color selectedColor;
     [SerializeField] private Vector3 positionOffset;
 
     [Header("Optional")]
     public GameObject turret;
     private Renderer rend;
     private Color originalColor;
+    private bool isSelected;
 
     private BuildManager buildManager;
 
@@ -29,6 +32,7 @@ public class Node : MonoBehaviour
         buildManager = BuildManager.Instance;
         rend = GetComponent<Renderer>();
         originalColor = rend.material.color;
+        isSelected = false;
     }
 
     private void OnMouseDown()
@@ -36,14 +40,14 @@ public class Node : MonoBehaviour
         if (EventSystem.current.IsPointerOverGameObject())
             return;
 
-        if (!buildManager.CanBuild || !buildManager.HasMoney)
-            return;
-
         if (turret)
         {
-            Debug.Log("We can't build here!");
+            buildManager.SelectNode(this);
             return;
         }
+
+        if (!buildManager.CanBuild || !buildManager.HasMoney)
+            return;
 
         // Build Turret
         buildManager.BuildTurretOn(this);
@@ -52,6 +56,9 @@ public class Node : MonoBehaviour
     private void OnMouseEnter()
     {
         if (EventSystem.current.IsPointerOverGameObject())
+            return;
+
+        if (isSelected)
             return;
 
         if (!buildManager.CanBuild)
@@ -69,6 +76,21 @@ public class Node : MonoBehaviour
 
     private void OnMouseExit()
     {
+        if (isSelected)
+            return;
+
         rend.material.color = originalColor;
+    }
+
+    // -------------------------------------------------------------------------
+    // Custom methods
+    // -------------------------------------------------------------------------
+    public void SelectToggle()
+    {
+        if (turret)
+        {
+            rend.material.color = (isSelected ? originalColor : selectedColor);
+            isSelected = !isSelected;
+        }
     }
 }

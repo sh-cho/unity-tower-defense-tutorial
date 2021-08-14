@@ -29,6 +29,8 @@ public class WaveSpawner : MonoBehaviour
     private IEnumerator SpawnWave()
     {
         ++_waveIndex;
+        ++PlayerStats.rounds;
+
         for (int i = 0; i < _waveIndex; ++i)
         {
             SpawnEnemy();
